@@ -1,0 +1,181 @@
+.redmine-note-clone-actions {
+  display: inline;
+}
+
+.redmine-note-clone-actions button,
+.redmine-note-clone-heading button,
+.redmine-note-clone-bar button,
+.redmine-note-clone-lookup button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0 8px 0 0;
+  color: #169;
+  cursor: pointer;
+  font: inherit;
+}
+
+.redmine-note-clone-drawer[hidden] {
+  display: none !important;
+}
+
+.redmine-note-clone-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10050;
+  display: flex;
+  flex-direction: column;
+  width: min(480px, 100vw);
+  height: 100vh;
+  box-sizing: border-box;
+  background: #fff;
+  border-left: 1px solid #d0d7de;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
+}
+
+.redmine-note-clone-bar,
+.redmine-note-clone-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f6f6f6;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.redmine-note-clone-foot {
+  flex-wrap: wrap;
+  border-bottom: 0;
+  border-top: 1px solid #e4e4e4;
+}
+
+.redmine-note-clone-bar h2,
+.redmine-note-clone-heading h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.redmine-note-clone-bar button {
+  margin-left: auto;
+}
+
+.redmine-note-clone-intro {
+  margin: 0;
+  padding: 12px 16px 0;
+  color: #555;
+}
+
+.redmine-note-clone-status {
+  margin: 8px 16px 0;
+  white-space: pre-wrap;
+}
+
+.redmine-note-clone-status.is-error {
+  color: #b94a48;
+}
+
+.redmine-note-clone-status.is-ok {
+  color: #2d6a2d;
+}
+
+.redmine-note-clone-scroll {
+  flex: 1;
+  overflow: auto;
+  padding: 8px 16px 16px;
+}
+
+.redmine-note-clone-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 8px;
+}
+
+.redmine-note-clone-note,
+.redmine-note-clone-target {
+  display: block;
+  margin: 0 0 12px;
+  padding: 8px;
+  border: 1px solid #e4e4e4;
+  background: #fafafa;
+}
+
+.redmine-note-clone-note label,
+.redmine-note-clone-target,
+.redmine-note-clone-file {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.redmine-note-clone-text,
+.redmine-note-clone-lookup input {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 8px;
+  font: inherit;
+}
+
+.redmine-note-clone-text {
+  min-height: 96px;
+}
+
+.redmine-note-clone-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.redmine-note-clone-file {
+  width: 140px;
+  margin: 0;
+}
+
+.redmine-note-clone-file img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.redmine-note-clone-target em,
+.redmine-note-clone-target small {
+  display: inline-block;
+  margin-left: 6px;
+  color: #666;
+  font-style: normal;
+  font-size: 12px;
+}
+
+.redmine-note-clone-target small {
+  display: block;
+  margin-left: 0;
+}
+
+.redmine-note-clone-lookup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.redmine-note-clone-lookup input {
+  width: auto;
+  flex: 1;
+  margin: 0;
+}
+
+.redmine-note-clone-submit {
+  margin-left: auto;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.redmine-note-clone-foot label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

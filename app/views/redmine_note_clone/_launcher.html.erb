@@ -1,0 +1,60 @@
+<% source = local_assigns[:issue] || @issue %>
+<% if source && User.current.logged? && RedmineNoteClone.any_visible_notes?(source, User.current) %>
+  <% labels = {
+    loading: l(:redmine_note_clone_loading),
+    sending: l(:redmine_note_clone_sending),
+    confirm: l(:redmine_note_clone_confirm),
+    confirmSkip: l(:redmine_note_clone_confirm_skip),
+    noRelated: l(:redmine_note_clone_no_related),
+    network: l(:redmine_note_clone_network),
+    private: l(:redmine_note_clone_private)
+  } %>
+  <% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'redmine_note_clone', plugin: 'redmine_note_clone' %>
+    <%= javascript_include_tag 'redmine_note_clone', plugin: 'redmine_note_clone' %>
+  <% end %>
+  <div id="redmine-note-clone"
+       data-url="<%= redmine_note_clone_path(source) %>"
+       data-lookup-url="<%= redmine_note_clone_lookup_path(source) %>">
+    <script type="application/json" class="redmine-note-clone-labels"><%= json_escape(labels.to_json).html_safe %></script>
+    <div class="redmine-note-clone-actions">
+      <button type="button" data-action="open"><%= l(:redmine_note_clone_open) %></button>
+      <button type="button" data-action="direct"><%= l(:redmine_note_clone_direct) %></button>
+    </div>
+    <div class="redmine-note-clone-drawer" hidden>
+      <header class="redmine-note-clone-bar">
+        <h2><%= l(:redmine_note_clone_title) %></h2>
+        <button type="button" data-action="close"><%= l(:redmine_note_clone_close) %></button>
+      </header>
+      <p class="redmine-note-clone-intro"><%= l(:redmine_note_clone_intro) %></p>
+      <div class="redmine-note-clone-status" aria-live="polite"></div>
+      <div class="redmine-note-clone-scroll">
+        <section>
+          <div class="redmine-note-clone-heading">
+            <h3><%= l(:redmine_note_clone_notes) %></h3>
+            <button type="button" data-action="notes-all"><%= l(:redmine_note_clone_select_all) %></button>
+            <button type="button" data-action="notes-none"><%= l(:redmine_note_clone_select_none) %></button>
+          </div>
+          <div data-list="notes"></div>
+        </section>
+        <section>
+          <div class="redmine-note-clone-heading">
+            <h3><%= l(:redmine_note_clone_targets) %></h3>
+            <button type="button" data-action="targets-all"><%= l(:redmine_note_clone_select_all) %></button>
+            <button type="button" data-action="targets-none"><%= l(:redmine_note_clone_select_none) %></button>
+          </div>
+          <div class="redmine-note-clone-lookup">
+            <input type="text" data-field="issue-id" placeholder="<%= l(:redmine_note_clone_issue_placeholder) %>" autocomplete="off" />
+            <button type="button" data-action="lookup"><%= l(:redmine_note_clone_add) %></button>
+          </div>
+          <div data-list="targets"></div>
+        </section>
+      </div>
+      <footer class="redmine-note-clone-foot">
+        <label><input type="checkbox" data-field="source" checked /> <%= l(:redmine_note_clone_include_source) %></label>
+        <label><input type="checkbox" data-field="notify" /> <%= l(:redmine_note_clone_notify) %></label>
+        <button type="button" class="redmine-note-clone-submit" data-action="submit"><%= l(:redmine_note_clone_submit) %></button>
+      </footer>
+    </div>
+  </div>
+<% end %>
